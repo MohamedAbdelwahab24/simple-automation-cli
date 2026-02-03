@@ -1,9 +1,9 @@
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
-with open("src/__init__.py", "r", encoding="utf-8") as fh:
+with open("automation_cli/__init__.py", "r", encoding="utf-8") as fh:
     version = fh.read().split("=")[-1].strip().strip('"')
 
 setup(
@@ -29,7 +29,7 @@ setup(
     install_requires=[],
     entry_points={
         "console_scripts": [
-            "automation-cli=simple_automation_cli.src.main:main",
+            "automation-cli=automation_cli.cli:main",
         ],
     },
 )

@@ -8,19 +8,12 @@ echo "🚀 Installing Simple Automation CLI..."
 
 # Get script directory
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-INSTALL_DIR="${HOME}/.local/bin"
 PROJECT_DIR="${SCRIPT_DIR}"
 
-# Create installation directory if it doesn't exist
-mkdir -p "${INSTALL_DIR}"
+python3 -m pip install --user "${PROJECT_DIR}"
 
-# Copy main script
-cp "${PROJECT_DIR}/src/main.py" "${INSTALL_DIR}/automation-cli"
-
-# Make it executable
-chmod +x "${INSTALL_DIR}/automation-cli"
-
-# Add to PATH if not already there
+# Ensure local bin is on PATH
+INSTALL_DIR="${HOME}/.local/bin"
 if [[ ":$PATH:" != *":${INSTALL_DIR}:"* ]]; then
     echo "" >> "${HOME}/.bashrc"
     echo "# Simple Automation CLI" >> "${HOME}/.bashrc"
